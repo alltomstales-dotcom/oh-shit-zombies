@@ -6,7 +6,7 @@
 - **Watch it being built:** the devlog series on YouTube, https://www.youtube.com/@alltomstales
 - **The written devlog:** [`docs/devlog/DEVLOG.md`](docs/devlog/DEVLOG.md), with the plan in [`docs/devlog/BACKLOG.md`](docs/devlog/BACKLOG.md). Mistakes stay in.
 
-**How it's made.** Tom directs and answers questions. AI coding agents (mostly Claude and Codex) write the code, run the tests and keep the log. AI players test it: reflex scripts, a fast decision model and slower planners, all in [`ai-testing/`](ai-testing/). Every change gets a pass mark written down before it's tested. The narration voice, the music and the images for the videos are made on DGX Spark machines lent by a friend in Detroit.
+**How it's made.** Tom directs and answers questions. AI coding agents (mostly Claude and Codex) write the code, run the tests and keep the log. AI players test it: reflex scripts, a fast decision model and slower planners, all in [`ai-testing/`](ai-testing/). Every change gets a pass mark written down before it's tested. The narration voice and the music for the videos, and much of the rest of the production, run on DGX Spark machines from a friend in Detroit.
 
 **Fork it.** The code is under BSD Zero Clause: use it for anything, commercial or not, no strings attached. Some art has its own terms; see [`ASSETS_LICENSE.md`](ASSETS_LICENSE.md). If you build a different game with the same pattern, we'd love to hear about it.
 
