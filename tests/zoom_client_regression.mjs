@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {zoomFactor,installIndoorZoom} from '../app/static/js/indoor-zoom.js';
+assert.equal(zoomFactor(.1),.5);assert.equal(zoomFactor(99),8);assert.equal(zoomFactor(NaN),1);
+const handlers={},canvas={addEventListener:(t,fn)=>handlers[t]=fn,setPointerCapture:()=>{}};
+let zoom=1,starts=0,ends=0,moves=0,taps=0,stops=0,enabled=true;
+installIndoorZoom(canvas,{enabled:()=>enabled,get:()=>zoom,set:v=>zoom=v,start:()=>{starts++;return true;},end:()=>ends++,move:()=>moves++,tap:()=>taps++,stop:()=>stops++});
+const e=(id,x,y,type='pointerdown')=>({pointerId:id,pointerType:'touch',clientX:x,clientY:y,type,preventDefault(){},stopImmediatePropagation(){}});
+handlers.pointerdown(e(1,100,100));handlers.pointerdown(e(2,200,100));
+handlers.pointermove(e(2,300,100,'pointermove'));assert.equal(zoom,2);assert.equal(stops,1);
+handlers.pointerup(e(2,300,100,'pointerup'));handlers.pointermove(e(1,101,100,'pointermove'));handlers.pointerup(e(1,101,100,'pointerup'));
+assert.equal(moves,0);assert.equal(taps,0);assert.equal(ends,1,'pinch release does not become walking');
+handlers.pointerdown(e(3,100,100));handlers.pointermove(e(3,140,100,'pointermove'));handlers.pointerup(e(3,140,100,'pointerup'));assert.equal(moves,1);assert.equal(ends,2);
+handlers.wheel({deltaY:-100,deltaMode:0,preventDefault(){},stopImmediatePropagation(){}});assert(zoom>2);
+enabled=false;const before=zoom;handlers.wheel({deltaY:100,deltaMode:0});assert.equal(zoom,before);
+console.log('Indoor wheel/pinch zoom is bounded; pinch release never walks; single finger still steers.');

@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';
+const {nearbyBody}=await import('data:text/javascript;base64,'+Buffer.from(fs.readFileSync('app/static/js/recovery.js','utf8')).toString('base64'));
+const stranger={id:'stranger',can_loot:false,reachable:true,d:0},shared={id:'zombie',reachable:true,d:0},own={id:'own',own:true,can_loot:true,reachable:true,d:0,recover_until:100};
+const pick=rows=>nearbyBody(rows,c=>c.d)?.c.id;
+assert.equal(pick([stranger,shared,own]),'own');assert.equal(pick([stranger]),undefined);
+assert.equal(pick([{...own,searched:true,items:[]},shared]),'zombie');
+assert.equal(pick([own,{...own,id:'newer',recover_until:200}]),'newer');
+assert.equal(pick([{...own,reachable:false},shared]),'zombie');
+assert.equal(pick([{...own,d:13}]),undefined);
+console.log('Recovery shortcut ignores private/empty packs and prefers reachable own gear.');

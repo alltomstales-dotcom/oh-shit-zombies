@@ -1,0 +1,146 @@
+[
+ {
+  "id": "zed_s10",
+  "prompt": "This is an RGBA image with transparency. One single zombie, a postman in a navy blue uniform and peaked cap with a satchel spilling letters, grey-green clay skin, dark sunken eye sockets, mouth hanging open, torn dirty clothes, a little dark red clay blood, both arms reaching forward, shuffling toward the viewer, full body from head to feet, seen from slightly above, centered, nothing else in the picture. Plasticine stop-motion animation puppet, soft rounded hand-sculpted forms, faint thumbprints and smudges in the clay, big round white ball eyes with tiny pupils, comic exaggerated proportions with a large head, grubby muted colours, soft even studio light. The image has alpha channel and the background is transparent.",
+  "seed": 5215,
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ },
+ {
+  "id": "zed_s11",
+  "prompt": "This is an RGBA image with transparency. One single zombie, a police officer in a torn dark uniform with a flat cap and a radio on the shoulder, grey-green clay skin, dark sunken eye sockets, mouth hanging open, torn dirty clothes, a little dark red clay blood, both arms reaching forward, shuffling toward the viewer, full body from head to feet, seen from slightly above, centered, nothing else in the picture. Plasticine stop-motion animation puppet, soft rounded hand-sculpted forms, faint thumbprints and smudges in the clay, big round white ball eyes with tiny pupils, comic exaggerated proportions with a large head, grubby muted colours, soft even studio light. The image has alpha channel and the background is transparent.",
+  "seed": 5216,
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ },
+ {
+  "id": "zed_s12",
+  "prompt": "This is an RGBA image with transparency. One single zombie, a farmer in muddy dungarees, wellington boots and a battered straw hat, grey-green clay skin, dark sunken eye sockets, mouth hanging open, torn dirty clothes, a little dark red clay blood, both arms reaching forward, shuffling toward the viewer, full body from head to feet, seen from slightly above, centered, nothing else in the picture. Plasticine stop-motion animation puppet, soft rounded hand-sculpted forms, faint thumbprints and smudges in the clay, big round white ball eyes with tiny pupils, comic exaggerated proportions with a large head, grubby muted colours, soft even studio light. The image has alpha channel and the background is transparent.",
+  "seed": 5217,
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ },
+ {
+  "id": "zed_s13",
+  "prompt": "This is an RGBA image with transparency. One single zombie, a bride in a dirty white wedding dress with a torn veil, grey-green clay skin, dark sunken eye sockets, mouth hanging open, torn dirty clothes, a little dark red clay blood, both arms reaching forward, shuffling toward the viewer, full body from head to feet, seen from slightly above, centered, nothing else in the picture. Plasticine stop-motion animation puppet, soft rounded hand-sculpted forms, faint thumbprints and smudges in the clay, big round white ball eyes with tiny pupils, comic exaggerated proportions with a large head, grubby muted colours, soft even studio light. The image has alpha channel and the background is transparent.",
+  "seed": 5218,
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ },
+ {
+  "id": "zed_s14",
+  "prompt": "This is an RGBA image with transparency. One single zombie, a firefighter in a scorched tan coat with reflective stripes and a dented red helmet, grey-green clay skin, dark sunken eye sockets, mouth hanging open, torn dirty clothes, a little dark red clay blood, both arms reaching forward, shuffling toward the viewer, full body from head to feet, seen from slightly above, centered, nothing else in the picture. Plasticine stop-motion animation puppet, soft rounded hand-sculpted forms, faint thumbprints and smudges in the clay, big round white ball eyes with tiny pupils, comic exaggerated proportions with a large head, grubby muted colours, soft even studio light. The image has alpha channel and the background is transparent.",
+  "seed": 5219,
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ },
+ {
+  "id": "zed_s15",
+  "prompt": "This is an RGBA image with transparency. One single zombie, a schoolteacher, a woman in a long skirt and a brown cardigan with round glasses hanging on a chain, grey-green clay skin, dark sunken eye sockets, mouth hanging open, torn dirty clothes, a little dark red clay blood, both arms reaching forward, shuffling toward the viewer, full body from head to feet, seen from slightly above, centered, nothing else in the picture. Plasticine stop-motion animation puppet, soft rounded hand-sculpted forms, faint thumbprints and smudges in the clay, big round white ball eyes with tiny pupils, comic exaggerated proportions with a large head, grubby muted colours, soft even studio light. The image has alpha channel and the background is transparent.",
+  "seed": 5220,
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ },
+ {
+  "id": "surv_p4",
+  "seed": 5304,
+  "prompt": "This is an RGBA image with transparency. One single scared survivor, a young woman with a ponytail in a yellow raincoat and wellington boots with a small blue backpack, crouching slightly and looking nervously to one side, empty hands held up ready, alive healthy skin, full body from head to feet, seen from slightly above, centered, nothing else in the picture. Plasticine stop-motion animation puppet, soft rounded hand-sculpted forms, faint thumbprints and smudges in the clay, big round white ball eyes with tiny pupils, comic exaggerated proportions with a large head, grubby muted colours, soft even studio light. The image has alpha channel and the background is transparent.",
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ },
+ {
+  "id": "surv_p5",
+  "seed": 5305,
+  "prompt": "This is an RGBA image with transparency. One single scared survivor, a man with glasses and messy brown hair in a grey hoodie and cargo trousers with a canvas messenger bag, crouching slightly and looking nervously to one side, empty hands held up ready, alive healthy skin, full body from head to feet, seen from slightly above, centered, nothing else in the picture. Plasticine stop-motion animation puppet, soft rounded hand-sculpted forms, faint thumbprints and smudges in the clay, big round white ball eyes with tiny pupils, comic exaggerated proportions with a large head, grubby muted colours, soft even studio light. The image has alpha channel and the background is transparent.",
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ },
+ {
+  "id": "surv_p6",
+  "seed": 5306,
+  "prompt": "This is an RGBA image with transparency. One single scared survivor, an older woman with curly grey hair in a purple fleece jacket and walking boots with a small rucksack, crouching slightly and looking nervously to one side, empty hands held up ready, alive healthy skin, full body from head to feet, seen from slightly above, centered, nothing else in the picture. Plasticine stop-motion animation puppet, soft rounded hand-sculpted forms, faint thumbprints and smudges in the clay, big round white ball eyes with tiny pupils, comic exaggerated proportions with a large head, grubby muted colours, soft even studio light. The image has alpha channel and the background is transparent.",
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ },
+ {
+  "id": "surv_p7",
+  "seed": 5307,
+  "prompt": "This is an RGBA image with transparency. One single scared survivor, a tall man with dark brown skin and a shaved head in a navy bomber jacket and work boots with a duffel bag over one shoulder, crouching slightly and looking nervously to one side, empty hands held up ready, alive healthy skin, full body from head to feet, seen from slightly above, centered, nothing else in the picture. Plasticine stop-motion animation puppet, soft rounded hand-sculpted forms, faint thumbprints and smudges in the clay, big round white ball eyes with tiny pupils, comic exaggerated proportions with a large head, grubby muted colours, soft even studio light. The image has alpha channel and the background is transparent.",
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ },
+ {
+  "id": "item_helmet",
+  "prompt": "This is an RGBA image with transparency. One single yellow builder's hard hat with a small crack, seen from the front and slightly above, empty, nobody wearing it, a game item, centered, nothing else in the picture. A handmade plasticine clay model of the object, soft rounded forms, faint thumbprints, grubby muted colours, soft even studio light, no face, no eyes, not a character. The image has alpha channel and the background is transparent.",
+  "seed": 5420,
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ },
+ {
+  "id": "item_rucksack",
+  "prompt": "This is an RGBA image with transparency. One single large olive green hiking rucksack standing upright with side pockets and a rolled blanket on top, a game item, centered, nothing else in the picture. A handmade plasticine clay model of the object, soft rounded forms, faint thumbprints, grubby muted colours, soft even studio light, no face, no eyes, not a character. The image has alpha channel and the background is transparent.",
+  "seed": 5421,
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ },
+ {
+  "id": "item_schoolbag",
+  "prompt": "This is an RGBA image with transparency. One single small blue school backpack standing upright with one front pocket, a game item, centered, nothing else in the picture. A handmade plasticine clay model of the object, soft rounded forms, faint thumbprints, grubby muted colours, soft even studio light, no face, no eyes, not a character. The image has alpha channel and the background is transparent.",
+  "seed": 5422,
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ },
+ {
+  "id": "item_fire_pants",
+  "prompt": "This is an RGBA image with transparency. One single firefighter's tan turnout trousers with reflective yellow stripes and braces, laid flat, a game item, centered, nothing else in the picture. A handmade plasticine clay model of the object, soft rounded forms, faint thumbprints, grubby muted colours, soft even studio light, no face, no eyes, not a character. The image has alpha channel and the background is transparent.",
+  "seed": 5424,
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ },
+ {
+  "id": "item_leather",
+  "prompt": "This is an RGBA image with transparency. One single brown leather biker jacket laid flat with the arms out, a game item, centered, nothing else in the picture. A handmade plasticine clay model of the object, soft rounded forms, faint thumbprints, grubby muted colours, soft even studio light, no face, no eyes, not a character. The image has alpha channel and the background is transparent.",
+  "seed": 5425,
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ },
+ {
+  "id": "item_boots",
+  "prompt": "This is an RGBA image with transparency. One single pair of scuffed brown leather work boots standing side by side, a game item, centered, nothing else in the picture. A handmade plasticine clay model of the object, soft rounded forms, faint thumbprints, grubby muted colours, soft even studio light, no face, no eyes, not a character. The image has alpha channel and the background is transparent.",
+  "seed": 5427,
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ },
+ {
+  "id": "item_fire_jacket",
+  "prompt": "This is an RGBA image with transparency. One single short firefighter's tan coat with reflective yellow stripes and a high collar, only the coat, upper body garment that ends at the waist, laid flat with the sleeves out, no trousers, a game item, centered, nothing else in the picture. A handmade plasticine clay model of the object, soft rounded forms, faint thumbprints, grubby muted colours, soft even studio light, no face, no eyes, not a character. The image has alpha channel and the background is transparent.",
+  "seed": 5440,
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ },
+ {
+  "id": "item_gloves",
+  "prompt": "This is an RGBA image with transparency. One single pair of two separate thick grey leather work gloves lying apart next to each other, each with five fingers, a game item, centered, nothing else in the picture. A handmade plasticine clay model of the object, soft rounded forms, faint thumbprints, grubby muted colours, soft even studio light, no face, no eyes, not a character. The image has alpha channel and the background is transparent.",
+  "seed": 5441,
+  "w": 1024,
+  "h": 1024,
+  "steps": 30
+ }
+]

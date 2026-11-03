@@ -1,0 +1,22 @@
+# Public server image: application code and pinned dependencies only, no compilers, no tests, no
+# tools, no art sources, no secrets. Runs as an unprivileged user. Secrets arrive as environment
+# variables from the compose file at run time and are never in a layer.
+FROM python:3.12-slim
+
+ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 PIP_NO_CACHE_DIR=1 PIP_DISABLE_PIP_VERSION_CHECK=1
+WORKDIR /srv
+
+COPY requirements.lock .
+RUN pip install -r requirements.lock && rm requirements.lock \
+    && useradd --uid 10001 --no-create-home --shell /usr/sbin/nologin osz
+
+COPY app ./app
+
+USER 10001
+ENV PORT=8000
+EXPOSE 8000
+
+# 32 KB per websocket message is many times what a real client sends. The ping drops dead phones.
+CMD uvicorn app.main:app --host 0.0.0.0 --port ${PORT} --no-access-log --no-server-header \
+    --log-level warning --ws-max-size 32768 --ws-ping-interval 20 --ws-ping-timeout 20 \
+    --limit-concurrency 256 --timeout-keep-alive 10

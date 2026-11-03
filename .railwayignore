@@ -1,0 +1,17 @@
+.venv/
+e2e/
+docs/
+tests/
+scratch/
+*.db
+*.db-shm
+*.db-wal
+__pycache__/
+*.pyc
+.git/
+*.egg-info/
+tools/
+
+node_modules/
+
+art/

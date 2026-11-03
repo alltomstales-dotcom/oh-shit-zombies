@@ -1,0 +1,7 @@
+*
+!app/
+!requirements.txt
+!requirements.lock
+**/__pycache__
+**/*.pyc
+**/.env

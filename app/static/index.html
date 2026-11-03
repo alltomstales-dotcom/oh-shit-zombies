@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0a0d0c">
+<title>Oh shit, Zombies.</title>
+<meta name="description" content="A free zombie survival game on real street maps. Scavenge, hole up, build, and try not to get bitten.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Oh shit, Zombies.">
+<meta property="og:description" content="A free zombie survival game on real street maps. Scavenge, hole up, build, and try not to get bitten.">
+<meta property="og:image" content="https://osz-production.up.railway.app/assets/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/assets/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<canvas id="cv"></canvas>
+<div id="edge"></div>
+<div id="startChooser" hidden role="dialog" aria-label="Choose a map start"><div class="card"><h2>Where do you start?</h2><p class="fine">This server never asks where you are. Pick a city; every player here is somewhere in one of them.</p><div id="startList"></div></div></div>
+<div id="locationNotice" hidden role="status"><span id="locationMessage">Finding your street…</span><div><button id="locationRetry" class="gps-only">Retry GPS</button><button id="locationManual" class="gps-only">Choose on map</button><button id="locationStart" hidden>Start here</button></div></div>
+
+<div id="hud" hidden>
+  <div id="moodles"></div>
+  <div id="topleft"><button id="bMenu" aria-label="Menu">☰</button><span id="kills"></span></div>
+  <div id="navigation"><button id="bStop" disabled>Stop walking</button><button id="bQuiet" aria-pressed="false" aria-label="Walk quietly: slower, harder to hear and to spot">QUIET</button><button id="bArea" aria-label="Area overview: the ground you remember">AREA</button><span id="noiseChip" role="status" aria-label="How far your footsteps carry"></span><span id="dayChip" role="status" aria-label="Day of this life, and the weather"></span><span id="heliChip" role="alert" hidden></span><span id="combatHint" role="status" hidden></span><span id="movementLabel">Tap the map to walk</span><button id="bFloor" hidden aria-label="Select stairs">Ground floor · stairs</button><button id="bZoomReset" hidden aria-label="Reset indoor zoom">Zoom 100% · reset</button><button id="bInteract" aria-label="Choose a nearby object">INTERACT</button><button id="bBody" hidden>Search body</button><button id="bLoot" hidden>Explore</button></div>
+  <div id="placementNotice" hidden><span id="placementLabel"></span><button id="confirmPlacement" disabled>Build here</button><button id="rotatePlacement">Rotate</button><button id="cancelPlacement">Cancel</button></div>
+  <div id="areaBar" hidden><b>Remembered area</b><button id="areaOut" aria-label="Zoom out">−</button><button id="areaIn" aria-label="Zoom in">+</button><button id="areaBack">Back</button><small id="areaNote"></small></div>
+  <div id="areaInfo" hidden role="status"></div>
+  <div id="toasts"></div>
+  <div id="channel" hidden><div id="channelBar"></div><span id="channelLabel"></span><button id="channelCancel">Cancel</button></div>
+  <div id="threatWarning" hidden role="status"></div>
+  <div id="worldCard" hidden><header><div><b id="worldName"></b><small id="worldDetail"></small></div><button id="worldClose" aria-label="Close object actions">×</button></header><div id="worldActions"></div></div>
+  <div id="quickBelt"><button id="qWeapon" aria-label="Switch weapon">🪓 Gear</button><button id="qWater" aria-label="Quick drinking water">💧</button><button id="qFood" aria-label="Quick food">🥫</button><button id="qBandage">🩹 Health</button><button id="qBuild">🛠 Build</button><button id="qStore" hidden aria-label="Store supplies at home">Store</button><small id="beltWeight"></small></div>
+  <div id="ctx"></div>
+  <div id="endwrap"><div id="endbar"></div></div>
+  <div id="stick" class="rest" aria-hidden="true"><i></i></div>
+  <div id="bar">
+    <div class="col left">
+      <button id="bBack" class="act small" hidden><b>BACK AWAY</b><i></i></button>
+    </div>
+    <div class="col mid">
+      <button id="bSprint" class="act small" aria-pressed="false"><b>SPRINT</b></button>
+      <button id="bPack" class="pack" aria-label="Pack and wounds"><img id="handImg" alt=""><span id="handCond"></span></button>
+    </div>
+    <button id="bShove" class="act"><b>SHOVE</b><i></i></button>
+    <div class="col right">
+      <button id="bShoot" class="act small" hidden><b>SHOOT</b><em id="ammo"></em><i></i></button>
+      <button id="bSwing" class="act big"><b id="swingLabel">SWING</b><i></i></button>
+    </div>
+  </div>
+  <div id="vehicleBar" hidden><span id="vehicleStatus"></span><small>Drag the stick or use WASD to steer. Tap clear ground for a short drive.</small><div><button id="vehicleEngine">Start engine</button><button id="vehicleReverse" aria-pressed="false">Reverse</button><button id="vehicleBrake">Brake</button><button id="vehicleCargo">Cargo</button><button id="vehicleExit">Exit vehicle</button></div></div>
+  <div id="siegeBar" hidden><div id="siegeTop"><b id="siegeTime">00:00</b><span id="siegeScore">0</span><span id="siegeLevel">Lv 1</span><span id="siegeKills">0 down</span></div><div id="siegeXpWrap"><i id="siegeXp"></i></div><small id="siegeNext"></small></div>
+  <div id="siegeBanner" hidden role="alert"></div>
+  <div id="siegeBoss" hidden><b id="siegeBossName"></b><div id="siegeBossBar"><i id="siegeBossHp"></i></div></div>
+  <div id="siegeChoice" hidden role="dialog" aria-label="Choose an upgrade"><h2 id="siegeChoiceTitle">Choose one.</h2><button id="siegePick0" class="siege-pick"></button><button id="siegePick1" class="siege-pick"></button><button id="siegePick2" class="siege-pick"></button><small id="siegeChoiceLeft"></small></div>
+  <div id="attrib">© OpenStreetMap contributors</div>
+  <pre id="dev" hidden></pre>
+</div>
+
+<div id="sceneDrawer" hidden aria-label="World interaction drawer"><header><div><b id="drawerTitle"></b><small id="drawerWeight"></small></div><button id="drawerExpand">Expand</button><button id="drawerClose">Close</button></header><div id="drawerTools"><span id="drawerHint"></span><label id="drawerQtyWrap">Qty <input id="drawerQty" type="number" inputmode="numeric" min="1" max="10000" value="1"></label></div><nav id="storageTabs" hidden aria-label="Storage direction"><button id="storageDeposit">Store from pack</button><button id="storageWithdraw">Stored supplies</button></nav><div id="drawerContent"></div></div>
+<div id="panel" hidden>
+  <div class="sheet">
+    <header><h2>You</h2><button id="panelExpand">Expand</button><button id="panelClose">Close</button></header>
+    <nav class="pack-tabs" aria-label="Inventory sections"><button data-pack-tab="pack">Pack</button><button data-pack-tab="equipment">Worn</button><button data-pack-tab="home">Home</button><button data-pack-tab="work">Work</button><button data-pack-tab="status">Health</button></nav>
+    <section id="packSection"><h3>Pack <span id="weight"></span></h3><select id="inventoryFilter" aria-label="Inventory category"><option value="all">All items</option><option value="gear">Gear and tools</option><option value="food">Food</option><option value="drink">Water</option><option value="medical">Medical</option><option value="material">Materials</option></select><div id="items"></div></section>
+    <section id="equipmentSection" hidden><h3>Choose your survivor</h3><div id="characterChoices" aria-label="Character appearance"></div><p class="fine">Appearance is saved on this device. Protection comes from equipped items below.</p><p class="fine">Protection applies only to covered body parts and weakens with condition. Worn items still weigh something.</p><div id="equipment"></div></section>
+    <section id="homeSection" hidden><p id="homeStatus" class="fine"></p><div id="homeJobs"></div><label class="free-text-only">Shelter name <input id="homeName" maxlength="40" autocomplete="off"></label><div class="row"><button id="setHome">SET HOME HERE</button><button id="renameHome" class="free-text-only" hidden>Rename</button><button id="returnHome" hidden>Walk home</button></div><label class="quantity">Transfer quantity <input id="transferQty" type="number" min="1" max="10000" value="1" inputmode="numeric"></label><details id="baseSharing"><summary>Share a base / join friends</summary><p id="baseStatus" class="fine"></p><label>Active base<select id="baseChoice"></select></label><div id="baseOwnerControls"><label>Invitation access<select id="baseInviteRole"><option value="builder">Builder — storage and work</option><option value="storage">Storage — supplies only</option></select></label><div class="row"><button id="baseInvite">Create invitation</button><button id="baseCloseInvites">Close invitations</button></div><label id="baseCodeLabel" hidden>Share this code (24 hours)<input id="baseCode" readonly><button id="baseCopy" type="button">Copy invitation code</button></label><div id="baseMembers"></div></div><label>Friend’s invitation code<input id="baseJoinCode" autocomplete="off" autocapitalize="off" spellcheck="false"></label><div class="row"><button id="baseJoin">Join base</button><button id="baseLeave" hidden>Leave shared base</button></div><small>Joining preserves your personal home. Walking and GPS still work normally. Revoke also closes old invitations. Existing members keep their role; revoke and invite again to change it.</small></details><h3>Stored supplies</h3><select id="storageContainer" aria-label="Storage container"></select><div id="homeItems"></div><h3>From your pack</h3><div id="homePack"></div></section>
+    <section id="workSection" hidden><p id="needsSummary" class="fine"></p><div id="workContent"></div></section>
+    <section id="statusSection" hidden><p id="backgroundStatus" class="fine"></p><div id="health"></div><h3>Experience and skills</h3><div id="progression"></div>
+    <h3>Wounds</h3><div id="wounds"></div>
+    </section>
+    <div class="row"><button id="bScream" aria-label="Scream to attract nearby zombies">SCREAM</button><button id="bMute">Sound: on</button><a href="/assets/audio/CREDITS.txt" target="_blank" rel="noopener">Sound credits</a><button id="bWorldView">View: 3D</button><button id="bDev">Stopwatch: off</button><button id="bInvite">Invite a friend</button><button id="bForget">Delete my data</button></div>
+    <p class="fine">Health only comes back while you are away from the game.<span class="gps-only"> Stay aware of the real street: never cross a road looking at this screen.</span></p>
+  </div>
+</div>
+
+<div id="title">
+  <div class="titleArt"></div>
+  <div class="titleBox">
+    <h1>Oh shit,<br>Zombies.</h1>
+    <p class="tag gps-only">A walk around your own streets. They are not empty.</p>
+    <p class="tag public-only">Real streets. Fictional everything else. They are not empty.</p>
+    <p id="titleStatus" class="tag" hidden></p>
+    <input id="name" class="free-text-only" maxlength="20" placeholder="Your survivor's name" autocomplete="off">
+    <fieldset class="background-choices"><legend>New survivor background</legend><div><label>Occupation<select id="backgroundOccupation" disabled><option value="generalist">Generalist</option></select></label><label>Trait<select id="backgroundTrait" disabled><option value="balanced">Balanced</option></select></label></div><p id="backgroundDescription" class="fine"></p><small>Applies to new survivors. Living survivors keep their saved background.</small></fieldset>
+    <button id="goWalk" class="go">Play</button>
+    <button id="goSiege" class="go alt siege-go">Siege: survive 30 minutes<small>Daley Plaza, Chicago. Waves, a boss every five minutes, chests. Your survivor waits safely at home.</small></button>
+    <div id="trailer"><a id="trailerPlay" href="https://youtu.be/MRGjiGp57as" target="_blank" rel="noopener"><span class="trailerThumb"></span><span class="trailerText"><b>Watch the trailer</b><small>Two minutes of real gameplay</small></span></a></div>
+    <ol class="howto">
+      <li>Tap the street to walk, or drag the lower left of the screen to steer. Fast is loud: a gentle push creeps.</li>
+      <li>Search containers, then choose the gear and supplies you need.</li>
+      <li>Pick a room as your home, store supplies, then build and fortify.</li>
+    </ol>
+    <p class="fine public-only">This server never asks where you are and keeps no real location. You get a random name and there is no chat. Players near you see your survivor, its random name and what it is doing, inside the game map only. <a href="/privacy.html" target="_blank" rel="noopener">What is stored</a>. Desktop: arrow keys or WASD, J swing, K shove, L back away, B bandage, E search.</p>
+    <p class="fine gps-only">Your location only sets which streets you play on: you walk by tapping, not by moving, and other players never see where you are. Travel more than half a mile and the play area follows. Desktop: arrow keys or WASD, J swing, K shove, L back away, B bandage, E search.</p>
+    <p class="fine">Free, unofficial and non-commercial. Inspired by Project Zomboid; it uses none of that game's art, text or code. Map © OpenStreetMap contributors. Art made with Qwen-Image and OpenAI image generation.</p>
+  </div>
+</div>
+
+<div id="full" hidden>
+  <div class="card">
+    <h1>Server full.</h1>
+    <p id="fullLine" class="tag">All the places are taken right now. A place frees up whenever someone leaves.</p>
+    <p id="fullCount" class="tag">Trying again in 30 s.</p>
+    <button id="bFullRetry" class="go">Try again now</button>
+    <p class="fine">Your survivor is kept. Nothing is lost by waiting.</p>
+  </div>
+</div>
+
+<div id="siegeEnd" hidden>
+  <div class="card">
+    <h1 id="siegeEndTitle">Siege over</h1>
+    <p id="siegeEndTime" class="dead">00:00</p>
+    <ul id="siegeEndStats"></ul>
+    <button id="siegeAgain" class="go">Siege again</button>
+    <button id="siegeExit" class="go alt">Back to the title</button>
+  </div>
+</div>
+
+<div id="death" hidden>
+  <div class="card">
+    <h1>Well, shit.</h1>
+    <p id="deathLine"></p>
+    <ul id="deathStats"></ul>
+    <button id="bShare" class="go alt">Share</button>
+    <fieldset class="background-choices"><legend>Next survivor</legend><div><label>Occupation<select id="deathBackgroundOccupation" disabled><option value="generalist">Generalist</option></select></label><label>Trait<select id="deathBackgroundTrait" disabled><option value="balanced">Balanced</option></select></label></div><p id="deathBackgroundDescription" class="fine"></p></fieldset>
+    <button id="bAgain" class="go">New survivor</button>
+  </div>
+</div>
+<script type="module" src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+OSZ recorded sound credits (2026-10-10)
+
+Kenney / Kenney Vleugels — Impact Sounds and RPG Audio, CC0.
+https://kenney.nl/assets/impact-sounds
+https://kenney.nl/assets/rpg-audio
+https://creativecommons.org/publicdomain/zero/1.0/
+Footsteps, wood/cloth/metal impacts, weapon swishes, glass, doors and handling.
+
+ArcadeParty — Zombie / Skeleton / Monster Voice Effects, CC0.
+https://opengameart.org/content/zombie-skeleton-monster-voice-effects
+Human yells/death and zombie yells/death.
+
+Darsycho — Zombie moans, CC0.
+https://opengameart.org/content/zombie-moans
+Original recording split into three short groan clips.
+
+Vincent Sevedge (uploaded as Tabasco) — Gunshot Sounds.
+https://opengameart.org/content/gunshot-sounds
+Archive license: Creative Commons Attribution 3.0 Unported.
+https://creativecommons.org/licenses/by/3.0/
+The web page labels CC0; OSZ follows the archive's stricter attribution license.
+shotty.wav used as shot_0.mp3.
+
+All clips were converted to mono 44.1kHz MP3, peak adjusted and high-pass filtered.
+Gunshot and zombie moans were trimmed. Playback uses small pitch/volume variations.
+No endorsement by the creators is implied.
