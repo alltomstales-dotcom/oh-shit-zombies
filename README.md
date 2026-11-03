@@ -8,6 +8,8 @@
 
 **How it's made.** Tom directs and answers questions. AI coding agents (mostly Claude and Codex) write the code, run the tests and keep the log. AI players test it: reflex scripts, a fast decision model and slower planners, all in [`ai-testing/`](ai-testing/). Every change gets a pass mark written down before it's tested. The narration voice and the music for the videos, and much of the rest of the production, run on DGX Spark machines from a friend in Detroit.
 
+**Run from a phone.** The whole project, every agent, build, test and video, is directed from Tom's phone through [T3 Code](https://github.com/pingdotgg/t3code), Theo's open-source app (with the Ping team) for running coding agents like Claude Code and Codex on your own machine. Thanks, Theo.
+
 **Fork it.** The code is under BSD Zero Clause: use it for anything, commercial or not, no strings attached. Some art has its own terms; see [`ASSETS_LICENSE.md`](ASSETS_LICENSE.md). If you build a different game with the same pattern, we'd love to hear about it.
 
 ---
